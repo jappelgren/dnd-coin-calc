@@ -1,0 +1,17 @@
+{
+  "name": "dnd-money-calc-cmd-line",
+  "version": "1.0.0",
+  "description": "A command line tool to make monetary transactions in your D&D game a little easier.",
+  "main": "./src/main.js",
+  "scripts": {
+    "start": "node ./src/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.2"
+  }
+}
