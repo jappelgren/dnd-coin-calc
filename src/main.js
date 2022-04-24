@@ -8,8 +8,11 @@ const subTractOrAddCoins = require('./utils/index');
 clear();
 
 console.log(
-  chalk.red.bgYellow(
-    figlet.textSync('D&D Coin Calc', { horizontalLayout: 'full' })
+  chalk.cyan(
+    figlet.textSync('D&D Coin Calculator\n', {
+      horizontalLayout: 'full',
+      font: 'Gothic',
+    })
   )
 );
 
@@ -43,23 +46,23 @@ const run = async () => {
   if (runAgain.convertMore === 'No') {
     process.exit();
   }
-// This doesn't work yet.  Maybe next weekend it will.
+  // This doesn't work yet.  Maybe next weekend it will.
 
-//   const sameCharacter = await prompts.sameCharacter();
-//   if (sameCharacter.sameCharacter === 'Yes') {
-//     previousResponses.assignPreviousValue(
-//       true,
-//       platinum,
-//       gold,
-//       electrum,
-//       silver,
-//       copper
-//     );
-//     previousResponses.logValues();
-//   } else {
-//     previousResponses.assignPreviousValue(false, 0, 0, 0, 0, 0);
-//     previousResponses.logValues();
-//   }
+  //   const sameCharacter = await prompts.sameCharacter();
+  //   if (sameCharacter.sameCharacter === 'Yes') {
+  //     previousResponses.assignPreviousValue(
+  //       true,
+  //       platinum,
+  //       gold,
+  //       electrum,
+  //       silver,
+  //       copper
+  //     );
+  //     previousResponses.logValues();
+  //   } else {
+  //     previousResponses.assignPreviousValue(false, 0, 0, 0, 0, 0);
+  //     previousResponses.logValues();
+  //   }
   run();
 };
 
