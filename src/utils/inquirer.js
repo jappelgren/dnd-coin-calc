@@ -28,24 +28,36 @@ const prompts = {
         name: 'gold',
         type: 'input',
         message: 'How many gold coins do you currently posses?',
+        default: `${
+            previousResponses.usePrevious ? previousResponses.gold : 0
+          }`,
         validate: (value) => validateNumber(value),
       },
       {
         name: 'electrum',
         type: 'input',
         message: 'How many electrum coins do you currently posses?',
+        default: `${
+            previousResponses.usePrevious ? previousResponses.electrum : 0
+          }`,
         validate: (value) => validateNumber(value),
       },
       {
         name: 'silver',
         type: 'input',
         message: 'How many silver coins do you currently posses?',
+        default: `${
+            previousResponses.usePrevious ? previousResponses.silver : 0
+          }`,
         validate: (value) => validateNumber(value),
       },
       {
         name: 'copper',
         type: 'input',
         message: 'How many copper coins do you currently posses?',
+        default: `${
+            previousResponses.usePrevious ? previousResponses.copper : 0
+          }`,
         validate: (value) => validateNumber(value),
       },
       {

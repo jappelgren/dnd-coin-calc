@@ -3,7 +3,7 @@ const clear = require('clear');
 const figlet = require('figlet');
 const prompts = require('./utils/inquirer');
 const subTractOrAddCoins = require('./utils/index');
-// let previousResponses = require('./utils/previousAnswers');
+const previousResponses = require('./utils/previousAnswers');
 
 clear();
 
@@ -34,35 +34,34 @@ const run = async () => {
       addOrSubtract === 'Add' ? 'to' : 'from'
     } coin purse.`
   );
-  console.log(
-    `New balance is: \n${subTractOrAddCoins(
-      addOrSubtract.toLowerCase(),
-      [+platinum, +gold, +electrum, +silver, +copper],
-      coinDifference,
-      coinType
-    )}`
+  
+  const newCoinValues = subTractOrAddCoins(
+    addOrSubtract.toLowerCase(),
+    [+platinum, +gold, +electrum, +silver, +copper],
+    coinDifference,
+    coinType
   );
+
+  console.log(`New balance is: \n${newCoinValues.msg}`);
+
   const runAgain = await prompts.convertMore();
   if (runAgain.convertMore === 'No') {
     process.exit();
   }
-  // This doesn't work yet.  Maybe next weekend it will.
 
-  //   const sameCharacter = await prompts.sameCharacter();
-  //   if (sameCharacter.sameCharacter === 'Yes') {
-  //     previousResponses.assignPreviousValue(
-  //       true,
-  //       platinum,
-  //       gold,
-  //       electrum,
-  //       silver,
-  //       copper
-  //     );
-  //     previousResponses.logValues();
-  //   } else {
-  //     previousResponses.assignPreviousValue(false, 0, 0, 0, 0, 0);
-  //     previousResponses.logValues();
-  //   }
+  const sameCharacter = await prompts.sameCharacter();
+  if (sameCharacter.sameCharacter === 'Yes') {
+    previousResponses.set(
+      true,
+      newCoinValues.platinum,
+      newCoinValues.gold,
+      newCoinValues.electrum,
+      newCoinValues.silver,
+      newCoinValues.copper
+    );
+  } else {
+    previousResponses.set(false, 0, 0, 0, 0, 0);
+  }
   run();
 };
 

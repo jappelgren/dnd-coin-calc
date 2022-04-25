@@ -12,7 +12,7 @@ const totalInCopper = (
   electrum *= 50;
   silver *= 10;
 
-  return platinum + gold + electrum + silver + copper; 
+  return platinum + gold + electrum + silver + copper;
 };
 
 const convertCopperToLeastCoins = (copper) => {
@@ -25,15 +25,22 @@ const convertCopperToLeastCoins = (copper) => {
   const silver = Math.floor(copper / 10);
   copper = copper % 10;
 
-  return `\n${chalk.white.bgBlue.inverse(
-    `Platinum:  ${platinum}`
-  )} \n${chalk.yellowBright.bgBlue.inverse(
-    `Gold: ${gold}`
-  )} \n${chalk.yellow.bgBlue.inverse(
-    `Electrum: ${electrum}`
-  )} \n${chalk.grey.bgBlue.inverse(
-    `Silver: ${silver}`
-  )} \n${chalk.red.bgBlue.inverse(`Copper: ${copper}`)}`;
+  return {
+    msg: `\n${chalk.white.bgBlue.inverse(
+      `Platinum:  ${platinum}`
+    )} \n${chalk.yellowBright.bgBlue.inverse(
+      `Gold: ${gold}`
+    )} \n${chalk.yellow.bgBlue.inverse(
+      `Electrum: ${electrum}`
+    )} \n${chalk.grey.bgBlue.inverse(
+      `Silver: ${silver}`
+    )} \n${chalk.red.bgBlue.inverse(`Copper: ${copper}`)}`,
+    platinum,
+    gold,
+    electrum,
+    silver,
+    copper
+  };
 };
 
 const subTractOrAddCoins = (operator, coinCount, coinDifference, coinType) => {
